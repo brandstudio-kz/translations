@@ -1,0 +1,44 @@
+{
+    "name": "brandstudio/translations",
+    "description": "BrandStudio translations",
+    "keywords": [
+        "Brandstudio"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/brandstudio-kz/translations",
+    "authors": [
+        {
+            "name": "Nurdaulet",
+            "email": "nurik9293709@gmail.com",
+            "homepage": "https://sarsenovz2z.github.io/",
+            "role": "Developer"
+        },
+        {
+            "name": "Nurlan",
+            "email": "nurlan.bboy@gmail.com",
+            "homepage": "https://nurlanrazak.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "brandstudio/publishable": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "BrandStudio\\Translations\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BrandStudio\\Translations\\TranslationServiceProvider"
+            ]
+        }
+    }
+}
