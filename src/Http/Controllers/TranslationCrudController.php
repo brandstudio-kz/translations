@@ -18,7 +18,7 @@ class TranslationCrudController extends CrudController
     {
         CRUD::setModel(config('translations.translation_class'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/translation');
-        CRUD::setEntityNameStrings(trans_choice('translations::translations.translations', 1), trans_choice('translations::translations.translations', 2));
+        CRUD::setEntityNameStrings(trans_choice('translations::admin.translations', 1), trans_choice('translations::admin.translations', 2));
 
         // CRUD::denyAccess(['create', 'delete', 'show']);
     }
@@ -34,7 +34,7 @@ class TranslationCrudController extends CrudController
             ],
             [
                 'name' => 'value_ru',
-                'label' => trans_choice('translations::translations.translations', 1) . '( ru )',
+                'label' => trans_choice('translations::admin.translations', 1) . '( ru )',
                 'limit' => 3000,
                 'view_namespace' => 'brandstudio::translations',
                 'type' => 'translation',
@@ -45,7 +45,7 @@ class TranslationCrudController extends CrudController
             ],
             [
                 'name' => 'value_en',
-                'label' => trans_choice('translations::translations.translations', 1) . '( en )',
+                'label' => trans_choice('translations::admin.translations', 1) . '( en )',
                 'limit' => 3000,
                 'view_namespace' => 'brandstudio::translations',
                 'type' => 'translation',
@@ -56,7 +56,7 @@ class TranslationCrudController extends CrudController
             ],
             [
                 'name' => 'value_kk',
-                'label' => trans_choice('translations::translations.translations', 1) . '( kk )',
+                'label' => trans_choice('translations::admin.translations', 1) . '( kk )',
                 'limit' => 3000,
                 'view_namespace' => 'brandstudio::translations',
                 'type' => 'translation',
@@ -75,9 +75,9 @@ class TranslationCrudController extends CrudController
 
         CRUD::addField([
             'name' => 'value',
-            'label' => trans_choice('translations::translations.translations', 1),
+            'label' => trans_choice('translations::admin.translations', 1),
             'type' => 'textarea',
-            'hint' => '<small>'.trans('translations::translations.translation_hint').'</small>',
+            'hint' => '<small>'.trans('translations::admin.translation_hint').'</small>',
         ]);
     }
 
