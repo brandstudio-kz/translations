@@ -2,14 +2,12 @@
 
 namespace BrandStudio\Translations;
 
-use Illuminate\Database\Eloquent\Model;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use BrandStudio\Starter\Models\Model;
 use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 
 
 class Translation extends Model
 {
-    use CrudTrait;
     use HasTranslations;
 
     protected $table = 'translations';

@@ -2,22 +2,29 @@
 
 namespace BrandStudio\Translations\Http\Controllers;
 
-use BrandStudio\Translations\Http\Requests\TranslationRequest;
-use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use BrandStudio\Starter\Http\Controllers\DefaultCrudController;
 
+use BrandStudio\Translations\Http\Requests\TranslationRequest;
 
-class TranslationCrudController extends CrudController
+class TranslationCrudController extends DefaultCrudController
 {
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
+    protected $class;
+    protected $requestClass = TranslationRequest::class;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->class = config('translations.translation_class');
+    }
+
 
     public function setup()
     {
-        CRUD::setModel(config('translations.translation_class'));
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/translation');
+        parent::setup();
+
         CRUD::setEntityNameStrings(trans_choice('translations::admin.translations', 1), trans_choice('translations::admin.translations', 2));
 
         // CRUD::denyAccess(['create', 'delete', 'show']);
@@ -25,7 +32,10 @@ class TranslationCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        parent::setupListOperation();
+
         CRUD::removeAllButtonsFromStack('line');
+
         CRUD::addColumns([
             [
                 'name' => 'row_number',
@@ -71,7 +81,7 @@ class TranslationCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(TranslationRequest::class);
+        parent::setupCreateOperation();
 
         CRUD::addField([
             'name' => 'value',
@@ -83,13 +93,13 @@ class TranslationCrudController extends CrudController
 
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        parent::setupUpdateOperation();
+
         CRUD::addField([
             'name' => 'value_ru',
             'label' => '',
             'type' => 'custom_html',
         ])->makeFirstField();
-
     }
 
 }
