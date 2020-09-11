@@ -14,11 +14,11 @@ class TranslationController extends Controller
     {
         $query = Translation::query();
 
-        $translations = $query->get()->toArray();
+        $translations = $query->get();
         $data = [];
 
         foreach($translations as $translation) {
-            $data[$translation['hash']] = $translation['value'];
+            $data[$translation->hash] = $translation->value;
         }
 
         return response()->json($data);
