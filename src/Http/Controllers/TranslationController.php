@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
 use BrandStudio\Translations\Translation;
+use BrandStudio\Localization\Facades\Localization;
 
 class TranslationController extends Controller
 {
@@ -26,6 +27,8 @@ class TranslationController extends Controller
 
     public function store(Request $request)
     {
+        Localization::setLocale('ru');
+
         $text = $request->text;
         $key = md5($text);
 
